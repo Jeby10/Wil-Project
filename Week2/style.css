@@ -1,0 +1,264 @@
+/* =========================
+  RESET
+========================= */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+/* =========================
+  BODY – SOFT PASTEL
+========================= */
+body {
+   font-family: 'Segoe UI', 'Poppins', sans-serif;
+   background: linear-gradient(135deg, #fff1f5, #f0fff4);
+   min-height: 100vh;
+   padding: 20px;
+   color: #444;
+}
+/* =========================
+  CONTAINER
+========================= */
+.container {
+   max-width: 1400px;
+   margin: auto;
+   background: #ffffff;
+   border-radius: 25px;
+   box-shadow: 0 20px 50px rgba(255, 182, 193, 0.35);
+   overflow: hidden;
+}
+/* =========================
+  HEADER – CUTE HERO
+========================= */
+header {
+   background: linear-gradient(135deg, #ffd6e8, #d9fdd3);
+   padding: 45px 30px;
+   text-align: center;
+}
+header h1 {
+   font-size: 3em;
+   color: #ff6f91;
+   margin-bottom: 8px;
+}
+header p {
+   font-size: 1.2em;
+   color: #5f6c7b;
+}
+/* =========================
+  CTA BANNER – WHOLESOME
+========================= */
+.cta-banner {
+   background: #fff7fb;
+   padding: 35px;
+   margin: 30px;
+   border-radius: 22px;
+   text-align: center;
+   border: 2px dashed #ffd1dc;
+}
+.cta-banner h2 {
+   font-size: 2em;
+   color: #ff6f91;
+   margin-bottom: 12px;
+}
+.cta-banner p {
+   font-size: 1.1em;
+   color: #666;
+   margin-bottom: 22px;
+}
+.cta-button {
+   background: #ffb3c6;
+   color: #fff;
+   padding: 14px 38px;
+   border: none;
+   border-radius: 50px;
+   font-size: 1.1em;
+   font-weight: bold;
+   cursor: pointer;
+   transition: all 0.3s ease;
+}
+.cta-button:hover {
+   background: #ff8fab;
+   transform: scale(1.05);
+}
+/* =========================
+  FILTERS – FRIENDLY UI
+========================= */
+.filters {
+   padding: 35px;
+   background: #f9fffb;
+   border-top: 2px solid #eafff0;
+}
+.filters h3 {
+   color: #ff6f91;
+   margin-bottom: 20px;
+   font-size: 1.6em;
+}
+.filter-group {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   gap: 20px;
+}
+.filter-item label {
+   font-weight: 600;
+   margin-bottom: 6px;
+   color: #555;
+}
+.filter-item select,
+.filter-item input {
+   padding: 12px;
+   border-radius: 14px;
+   border: 2px solid #ffe0ea;
+   background: #fff;
+   font-size: 1em;
+}
+.filter-item select:focus,
+.filter-item input:focus {
+   outline: none;
+   border-color: #ff8fab;
+}
+/* =========================
+  FILTER BUTTONS
+========================= */
+.filter-buttons {
+   display: flex;
+   gap: 15px;
+   margin-top: 25px;
+}
+.btn {
+   padding: 12px 30px;
+   border-radius: 30px;
+   font-size: 1em;
+   font-weight: bold;
+   cursor: pointer;
+}
+.btn-primary {
+   background: #98e6b5;
+   color: #fff;
+   border: none;
+}
+.btn-primary:hover {
+   background: #6fdba1;
+}
+.btn-secondary {
+   background: #ffd6e8;
+   color: #ff6f91;
+   border: none;
+}
+.btn-secondary:hover {
+   background: #ffb3c6;
+   color: #fff;
+}
+/* =========================
+  PET GRID
+========================= */
+.pets-grid {
+   padding: 35px;
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+   gap: 30px;
+}
+/* =========================
+  PET CARD – ANIME CUTE
+========================= */
+.pet-card {
+   background: #fff;
+   border-radius: 25px;
+   box-shadow: 0 10px 30px rgba(255, 182, 193, 0.25);
+   transition: all 0.3s ease;
+   cursor: pointer;
+}
+.pet-card:hover {
+   transform: translateY(-10px) scale(1.02);
+}
+.pet-card.urgent {
+   border: 3px solid #ff8fab;
+}
+/* =========================
+  URGENT BADGE – ANNYA STYLE
+========================= */
+.urgent-badge {
+   position: absolute;
+   top: 15px;
+   right: 15px;
+   background: #ff8fab;
+   color: white;
+   padding: 6px 14px;
+   border-radius: 20px;
+   font-size: 0.8em;
+}
+/* =========================
+  PET IMAGE – SOFT
+========================= */
+.pet-image {
+   height: 220px;
+   background: linear-gradient(135deg, #ffe4ef, #eafff0);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 4em;
+}
+/* =========================
+  PET INFO
+========================= */
+.pet-info {
+   padding: 22px;
+}
+.pet-name {
+   font-size: 1.5em;
+   font-weight: bold;
+   color: #ff6f91;
+   margin-bottom: 8px;
+}
+.pet-details {
+   color: #666;
+   margin-bottom: 15px;
+   line-height: 1.5;
+}
+.learn-more {
+   background: #98e6b5;
+   color: white;
+   padding: 12px;
+   border: none;
+   border-radius: 30px;
+   width: 100%;
+   font-weight: bold;
+   cursor: pointer;
+}
+.learn-more:hover {
+   background: #6fdba1;
+}
+/* =========================
+  NO RESULTS
+========================= */
+.no-results {
+   text-align: center;
+   padding: 60px;
+   color: #888;
+}
+.no-results h3 {
+   font-size: 2em;
+   color: #ff8fab;
+}
+/* =========================
+  FOOTER
+========================= */
+footer {
+   background: #fff7fb;
+   text-align: center;
+   padding: 25px;
+   color: #999;
+}
+/* =========================
+  RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+   header h1 {
+       font-size: 2.2em;
+   }
+   .filter-buttons {
+       flex-direction: column;
+   }
+   .pets-grid {
+       grid-template-columns: 1fr;
+   }
+}

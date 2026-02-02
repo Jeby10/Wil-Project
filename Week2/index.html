@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fur Fetch - Find Your Perfect Pet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐾 Fur Fetch</h1>
+            <p>Helping Pets Find Their Forever Homes</p>
+        </header>
+
+        <div class="cta-banner">
+            <h2>Ready to Add Love to Your Life?</h2>
+            <p>Every pet deserves a loving home. Browse our available pets and start your adoption journey today!</p>
+            <button class="cta-button" onclick="scrollToFilters()">Find Your Perfect Match</button>
+        </div>
+
+        <div class="filters" id="filters-section">
+            <h3>🔍 Find Your Perfect Pet</h3>
+            <div class="filter-group">
+                <div class="filter-item">
+                    <label for="breed">Breed</label>
+                    <select id="breed">
+                        <option value="">All Breeds</option>
+                        <option value="Labrador">Labrador</option>
+                        <option value="Golden Retriever">Golden Retriever</option>
+                        <option value="Beagle">Beagle</option>
+                        <option value="Tabby Cat">Tabby Cat</option>
+                        <option value="Siamese Cat">Siamese Cat</option>
+                        <option value="Persian Cat">Persian Cat</option>
+                        <option value="Mixed">Mixed Breed</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="age">Age</label>
+                    <select id="age">
+                        <option value="">All Ages</option>
+                        <option value="Puppy/Kitten">Puppy/Kitten (0-1 year)</option>
+                        <option value="Young">Young (1-3 years)</option>
+                        <option value="Adult">Adult (3-7 years)</option>
+                        <option value="Senior">Senior (7+ years)</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="size">Size</label>
+                    <select id="size">
+                        <option value="">All Sizes</option>
+                        <option value="Small">Small (0-25 lbs)</option>
+                        <option value="Medium">Medium (25-50 lbs)</option>
+                        <option value="Large">Large (50+ lbs)</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="Enter city or zip code">
+                </div>
+            </div>
+            <div class="filter-buttons">
+                <button class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+                <button class="btn btn-secondary" onclick="resetFilters()">Reset</button>
+            </div>
+        </div>
+
+        <div class="pets-grid" id="pets-grid"></div>
+
+        <footer>
+            <p>&copy; 2026 Fur Fetch. Making tails wag and hearts full. 🐶🐱</p>
+        </footer>
+    </div>
+
+    <script>
+        const pets = [
+            { id: 1, name: "Max", breed: "Labrador", age: "Young", size: "Large", location: "Toronto, ON", urgent: true, emoji: "🐕" },
+            { id: 2, name: "Bella", breed: "Golden Retriever", age: "Adult", size: "Large", location: "Vancouver, BC", urgent: false, emoji: "🦮" },
+            { id: 3, name: "Charlie", breed: "Beagle", age: "Puppy/Kitten", size: "Medium", location: "Montreal, QC", urgent: true, emoji: "🐶" },
+            { id: 4, name: "Luna", breed: "Tabby Cat", age: "Young", size: "Small", location: "Toronto, ON", urgent: false, emoji: "🐱" },
+            { id: 5, name: "Cooper", breed: "Golden Retriever", age: "Senior", size: "Large", location: "Calgary, AB", urgent: true, emoji: "🐕‍🦺" },
+            { id: 6, name: "Daisy", breed: "Mixed", age: "Adult", size: "Medium", location: "Ottawa, ON", urgent: false, emoji: "🐕" },
+            { id: 7, name: "Milo", breed: "Siamese Cat", age: "Puppy/Kitten", size: "Small", location: "Toronto, ON", urgent: false, emoji: "🐈" },
+            { id: 8, name: "Lucy", breed: "Labrador", age: "Young", size: "Large", location: "Edmonton, AB", urgent: false, emoji: "🦮" },
+            { id: 9, name: "Rocky", breed: "Mixed", age: "Adult", size: "Medium", location: "Vancouver, BC", urgent: true, emoji: "🐶" },
+            { id: 10, name: "Whiskers", breed: "Persian Cat", age: "Senior", size: "Small", location: "Montreal, QC", urgent: false, emoji: "😺" }
+        ];
+
+        let filteredPets = [...pets];
+
+        function renderPets(petsToRender) {
+            const grid = document.getElementById('pets-grid');
+            
+            if (petsToRender.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <h3>😢 No Pets Found</h3>
+                        <p>Try adjusting your filters to see more adorable pets!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = petsToRender.map(pet => `
+                <div class="pet-card ${pet.urgent ? 'urgent' : ''}" onclick="viewPetDetails(${pet.id})">
+                    ${pet.urgent ? '<div class="urgent-badge">⚡ URGENT</div>' : ''}
+                    <div class="pet-image">${pet.emoji}</div>
+                    <div class="pet-info">
+                        <div class="pet-name">${pet.name}</div>
+                        <div class="pet-details">
+                            <span><strong>Breed:</strong> ${pet.breed}</span>
+                            <span><strong>Age:</strong> ${pet.age}</span>
+                            <span><strong>Size:</strong> ${pet.size}</span>
+                            <span><strong>📍 Location:</strong> ${pet.location}</span>
+                        </div>
+                        <button class="learn-more">Learn More & Adopt</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function applyFilters() {
+            const breed = document.getElementById('breed').value;
+            const age = document.getElementById('age').value;
+            const size = document.getElementById('size').value;
+            const location = document.getElementById('location').value.toLowerCase();
+
+            filteredPets = pets.filter(pet => {
+                return (!breed || pet.breed === breed) &&
+                       (!age || pet.age === age) &&
+                       (!size || pet.size === size) &&
+                       (!location || pet.location.toLowerCase().includes(location));
+            });
+
+            renderPets(filteredPets);
+        }
+
+        function resetFilters() {
+            document.getElementById('breed').value = '';
+            document.getElementById('age').value = '';
+            document.getElementById('size').value = '';
+            document.getElementById('location').value = '';
+            filteredPets = [...pets];
+            renderPets(filteredPets);
+        }
+
+        function viewPetDetails(petId) {
+            const pet = pets.find(p => p.id === petId);
+            alert(`You're interested in ${pet.name}! 🎉\n\nIn a full application, this would open a detailed profile with:\n• More photos\n• Full description\n• Medical history\n• Adoption application form\n\nThank you for considering adoption!`);
+        }
+
+        function scrollToFilters() {
+            document.getElementById('filters-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        renderPets(filteredPets);
+    </script>
+</body>
+</html>
