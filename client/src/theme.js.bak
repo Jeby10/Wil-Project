@@ -1,0 +1,52 @@
+import { createSystem, defaultConfig } from '@chakra-ui/react'
+
+// Week 2 inspired color palette
+// Pink: #ffd6e8, #ff6f91
+// Green: #d9fdd3, #98e6b5
+
+const customConfig = {
+  ...defaultConfig,
+  theme: {
+    tokens: {
+      colors: {
+        brand: {
+          pink: {
+            50: { value: '#fff5f9' },
+            100: { value: '#ffd6e8' },
+            200: { value: '#ffb8d6' },
+            300: { value: '#ff99c4' },
+            400: { value: '#ff84b1' },
+            500: { value: '#ff6f91' },
+            600: { value: '#e6537a' },
+            700: { value: '#cc3d63' },
+            800: { value: '#b3294c' },
+            900: { value: '#991935' }
+          },
+          green: {
+            50: { value: '#f7fef6' },
+            100: { value: '#d9fdd3' },
+            200: { value: '#bffbb4' },
+            300: { value: '#a6f895' },
+            400: { value: '#98e6b5' },
+            500: { value: '#7ed997' },
+            600: { value: '#65cc79' },
+            700: { value: '#4cbf5b' },
+            800: { value: '#33b33d' },
+            900: { value: '#1aa61f' }
+          }
+        }
+      }
+    },
+    semanticTokens: {
+      colors: {
+        primary: { value: '{colors.brand.pink.500}' },
+        secondary: { value: '{colors.brand.green.400}' },
+        'bg.primary': { value: '#fafafa' },
+        'bg.card': { value: 'white' },
+        'bg.card.hover': { value: '{colors.brand.pink.50}' }
+      }
+    }
+  }
+}
+
+export const system = createSystem(customConfig)
