@@ -908,18 +908,5 @@ if (isAdmin()) { ... }
 - Export applications to PDF
 - Calendar integration for adoption appointments
 
----
 
-## 📖 Reference Files
 
-- **Development Plan**: `.dev_plan.md`
-- **Development Instructions**: `CLAUDE.md`
-- **Week 2 UI Design**: `Week2/index.html`, `Week2/style.css`
-- **Week 3 MVC Reference**: `Week3/model.js`, `Week3/view.js`, `Week3/controller.js`
-- **Seed Data**: `server/seed.js` (18 pets, 8 applications, 4 users)
-
----
-
-**Generated:** February 17, 2026  
-**Version:** Architecture v1.0  
-**Stack:** MERN (MongoDB, Express, React, Node.js)
